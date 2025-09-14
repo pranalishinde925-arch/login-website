@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box, .welcome-box {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    a {
+      display: block;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Box -->
+  <div class="login-box" id="loginBox">
+    <h2>Welcome to Login Page</h2>
+    <form onsubmit="return checkPassword()">
+      <input type="password" id="password" placeholder="Enter Password" required><br>
+      <button type="submit">Login</button>
+    </form>
+    <a href="#">Forgot Password?</a>
+  </div>
+
+  <!-- Welcome Box (Hidden initially) -->
+  <div class="welcome-box" id="welcomeBox" style="display:none;">
+    <h2>Login Successful 🎉</h2>
+    <p>Welcome, bro!</p>
+    <img src="C:\Users\Dell\Desktop\dadu/images.jpeg" alt="Welcome Image">
+  </div>
+
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    function checkPassword() {
+      let pwd = document.getElementById("password").value;
+      let correctPwd = "bro"; // correct password
+
+      if (pwd === correctPwd) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("welcomeBox").style.display = "block";
+
+        // Confetti animation
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+
+        return false; // stop form submission
+      } else {
+        alert("Wrong Password, try again!");
+        return false;
+      }
+    }
+  </script>
+
+</body>
+</html>
